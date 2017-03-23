@@ -1,0 +1,28 @@
+BucketList | <a href="#/dashboard">Home</a> | <a href="/">Logout</a>
+<h1>Welcome, {{user.name}}</h1>
+<form name="add_list">
+  <div ng-messages="add_list.title.$error" style="color:maroon" role="alert">
+    <div ng-message="minlength">Title is too short</div>
+  </div>
+  <div ng-messages="add_list.description.$error" style="color:maroon" role="alert">
+    <div ng-message="minlength">Description is too short</div>
+  </div>
+  <input type="text"id="title" placeholder="title" ng-model="newBucket.title" name="title" ng-minlength="5">
+  <input type="text" id="description" placeholder="description" ng-model="newBucket.description" ng-minlength="10" name="description">
+  <select ng-model="newBucket.tagged">
+    <option ng-repeat="user in allusers" value={{user._id}}>{{user.name}}</option>
+  </select>
+  <button ng-click="addlist(newBucket)">Add to List</button>
+</form>
+<h3>Before i die:</h3>
+<p ng-repeat="bucket in alltagged">
+  <input type="checkbox"  ng-if="bucket.status == false" ng-click="changestatus(bucket._id)">
+  <input type="checkbox"  ng-if="bucket.status == true" checked>
+  {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}</p>
+<p ng-repeat="bucket in allbuckets">
+  <input type="checkbox"  ng-if="bucket.status == false" ng-click="changestatus(bucket._id)">
+  <input type="checkbox"  ng-if="bucket.status == true" checked>
+  {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}</p>
+
+<h3>List of all other users</h3>
+<p ng-repeat="user in allusers"><a href="#!/user/{{user._id}}">{{user.name}}</a></p>

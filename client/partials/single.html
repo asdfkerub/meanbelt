@@ -1,0 +1,28 @@
+BucketList | <a href="#!/dashboard">Home</a> | <a href="/">Logout</a>
+<h1>{{currentUser.name}} bucketlists</h1>
+<h4>Done</h4>
+<p ng-repeat="bucket in singleuser">
+  <span ng-if="bucket.status == true">
+    <input type="checkbox"checked disabled>
+    {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}</p>
+  </span>
+</p>
+<p ng-repeat="bucket in singleusert">
+  <span ng-if="bucket.status == true">
+  <input type="checkbox" checked disabled>
+  {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}
+</span>
+</p>
+<h4>Pending</h4>
+<p ng-repeat="bucket in singleuser">
+  <span ng-if="bucket.status == false">
+    <input type="checkbox" disabled>
+    {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}</p>
+  </span>
+</p>
+<p ng-repeat="bucket in singleusert">
+  <span ng-if="bucket.status == false">
+  <input type="checkbox" disabled>
+  {{bucket.tagged.name}} | {{bucket.title}} - {{bucket.description}}... {{bucket.createdAt | date}}
+</span>
+</p>
